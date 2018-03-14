@@ -5,7 +5,7 @@
     "url": "",
     "database": "fss",
     "password": "",
-    "name": "databasefss",
+    "name": "db",
     "user": "",
     "connector": "mongodb"
   }
