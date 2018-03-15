@@ -1,6 +1,6 @@
 {
   "name": "files",
-  "base": "PersistedModel",
+  "base": "Model",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -20,7 +20,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "users": {
+      "type": "hasOne",
+      "model": "User",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "*",
