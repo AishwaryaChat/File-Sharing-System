@@ -21,11 +21,6 @@
   },
   "validations": [],
   "relations": {
-    "users": {
-      "type": "hasOne",
-      "model": "User",
-      "foreignKey": ""
-    }
   },
   "acls": [
     {

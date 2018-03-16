@@ -3,7 +3,7 @@
 var LoopBackContext = require('loopback-context')
 
 module.exports = function(Files) {
-  Files.addOrganisation = (name, content, userId, cb) => {
+  Files.addFiles = (name, content, userId, cb) => {
     Files.create({name, content, userId})
     .then(file => {
       cb(null, file)
@@ -13,8 +13,16 @@ module.exports = function(Files) {
       cb(err)
     })
   }
+  Files.getFilesByUserId = (userId, cb) => {
+    Files.find({userId})
+    .then(files => cb(null, files))
+    .catch(err => {
+      console.log(err)
+      cb(err)
+    })
+  }
   Files.remoteMethod(
-    'addOrganisation', {
+    'addFiles', {
       http: {
         path: '/',
         verb: 'post'
@@ -31,10 +39,25 @@ module.exports = function(Files) {
       }
     ],
       returns: {
-          arg: 'data',
-          type: 'string'
+          type: 'object',
+          root: true
       }
     }
   )
-
+  Files.remoteMethod(
+    'getFilesByUserId', {
+      http: {
+        path: '/userId/:userId',
+        verb: 'get'
+      },
+      accepts: {
+        arg: 'userId',
+        type: 'string'
+      },
+      returns: {
+        type: 'object',
+        root: true
+      }
+    }
+  )
 };
