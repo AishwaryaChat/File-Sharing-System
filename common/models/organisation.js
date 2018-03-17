@@ -13,6 +13,18 @@ module.exports = function(Organisation) {
       cb(err)
     })
   }
+  Organisation.getOrganisation = (options, cb) => {
+    Organisation.findOne({admin: options.accessToken.userId})
+    .then(organisation => {
+      if (!organisation) cb(null, {})
+      else cb(null, organisation)
+    })
+    .catch(err => {
+      console.log(err)
+      cb(err)
+    })
+  }
+
   Organisation.remoteMethod(
     'createOrganisation', {
       http: {
@@ -29,6 +41,24 @@ module.exports = function(Organisation) {
           "type": "object",
           "http": "optionsFromRequest"
         }],
+      returns: {
+        type: 'object',
+        root: true
+      }
+    }
+  )
+
+  Organisation.remoteMethod(
+    'getOrganisation', {
+      http: {
+        path: '/',
+        verb: 'get'
+      },
+      accepts: {
+        "arg": "options",
+        "type": "object",
+        "http": "optionsFromRequest"
+      },
       returns: {
         type: 'object',
         root: true
