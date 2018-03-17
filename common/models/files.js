@@ -13,14 +13,6 @@ module.exports = function(Files) {
       cb(err)
     })
   }
-  Files.getFilesByUserId = (options, cb) => {
-    Files.find({userId: options.accessToken.userId})
-    .then(files => cb(null, files))
-    .catch(err => {
-      console.log(err)
-      cb(err)
-    })
-  }
   Files.remoteMethod(
     'addFiles', {
       http: {
@@ -45,6 +37,16 @@ module.exports = function(Files) {
       }
     }
   )
+
+  Files.getFilesByUserId = (options, cb) => {
+    Files.find({userId: options.accessToken.userId})
+    .then(files => cb(null, files))
+    .catch(err => {
+      console.log(err)
+      cb(err)
+    })
+  }
+
   Files.remoteMethod(
     'getFilesByUserId', {
       http: {
@@ -56,6 +58,31 @@ module.exports = function(Files) {
         "type": "object",
         "http": "optionsFromRequest"
       }],
+      returns: {
+        type: 'object',
+        root: true
+      }
+    }
+  )
+
+  Files.getFileById = (id, cb) => {
+    Files.find({"where": { id }})
+    .then(file => cb(null, file))
+    .catch(err => {
+      console.log(err)
+      cb(err)
+    })
+  }
+  Files.remoteMethod(
+    'getFileById', {
+      http: {
+        path: '/:id',
+        verb: 'get'
+      },
+      accepts: {
+        "arg": "id",
+        "type": 'string'
+      },
       returns: {
         type: 'object',
         root: true
