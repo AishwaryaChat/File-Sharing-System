@@ -18,6 +18,11 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "files": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],
@@ -25,6 +30,11 @@
     "user-organisation": {
       "type": "belongsTo",
       "model": "User",
+      "foreignKey": ""
+    },
+    "organisationfiles": {
+      "type": "hasMany",
+      "model": "files",
       "foreignKey": ""
     }
   },

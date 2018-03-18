@@ -65,23 +65,26 @@ module.exports = function(Files) {
     }
   )
 
-  Files.getFileById = (id, cb) => {
-    Files.find({"where": { id }})
-    .then(file => cb(null, file))
+  Files.getFilesById = (id, cb) => {
+    const promises = id.map(fileId => Files.findById(fileId))
+    Promise.all(promises)
+    .then(files => cb(null, files))
     .catch(err => {
       console.log(err)
       cb(err)
     })
   }
   Files.remoteMethod(
-    'getFileById', {
+    'getFilesById', {
       http: {
         path: '/:id',
         verb: 'get'
       },
       accepts: {
         "arg": "id",
-        "type": 'string'
+        "type": [
+          'string'
+        ]
       },
       returns: {
         type: 'object',

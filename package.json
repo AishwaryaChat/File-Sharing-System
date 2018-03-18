@@ -22,7 +22,8 @@
     "loopback-context": "^3.3.0",
     "loopback-datasource-juggler": "^2.39.0",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^2.0.0"
+    "strong-error-handler": "^2.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
