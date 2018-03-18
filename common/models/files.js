@@ -92,4 +92,47 @@ module.exports = function(Files) {
       }
     }
   )
+
+  Files.editFiles = (id, name, content, options, cb) => {
+    Files.findById(id)
+    .then(file => {
+      if (file.userId == options.accessToken.userId) {
+        file = Object.assign(file, {name, content})
+        return file.save()
+      } else return Promise.reject('error.cannot edit invalid user')
+    })
+    .then(file => cb(null, file))
+    .catch(err => {
+      console.log(err)
+      cb(err)
+    })
+  }
+  Files.remoteMethod(
+    'editFiles', {
+      http: {
+        path: '/:id',
+        verb: 'patch'
+      },
+      accepts: [
+        {
+          arg: 'id',
+          type: 'string'
+        }, {
+        arg: 'name',
+        type: 'string'
+      }, {
+          arg: 'content',
+          type: 'string'
+      }, {
+        "arg": "options",
+        "type": "object",
+        "http": "optionsFromRequest"
+      }
+    ],
+      returns: {
+          type: 'object',
+          root: true
+      }
+    }
+  )
 };
