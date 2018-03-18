@@ -1,0 +1,29 @@
+{
+  "name": "PublicModel",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "files": {
+      "type": "hasMany",
+      "model": "files",
+      "foreignKey": ""
+    },
+    "organisations": {
+      "type": "hasMany",
+      "model": "organisation",
+      "foreignKey": ""
+    },
+    "users": {
+      "type": "hasMany",
+      "model": "User",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

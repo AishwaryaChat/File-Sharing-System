@@ -42,5 +42,9 @@
   "files": {
     "dataSource": "db",
     "public": true
+  },
+  "PublicModel": {
+    "dataSource": "db",
+    "public": true
   }
 }
