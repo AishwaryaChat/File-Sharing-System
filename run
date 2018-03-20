@@ -5,4 +5,4 @@ npm install
 npm run build
 cd ..
 service mongod start
-nodemon -e js,css,html,ejs server/server.js
+node .
