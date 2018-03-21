@@ -1,0 +1,21 @@
+version: '2'
+services:
+  builder:
+    image: node:7
+    volumes:
+      - .:/builder/
+    working_dir: /builder/
+  web:
+    build:
+      context: ./
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/apps/File-Sharing-System
+    depends_on:
+     - mongo
+    env_file: .env
+  mongo:
+    image: mongo
+    ports:
+      - "3001:27017"
