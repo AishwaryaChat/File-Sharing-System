@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: black;
+}
+
+.bg-color {
+  background-color: #E4DCDB;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.vertical-center {
+  padding: 100px;
+}
+
+.form-group {
+  margin-top: 10%;
+}
+
+.login-border {
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.hc-button {
+  margin-left: 43%;
+  margin-top: 25px;
+}
+
+.dashboard-wrapper {
+  margin: 20px 0 0 0;
+}
+
+.card {
+  margin-top: 2%;
+}
+
+.card-header {
+  margin-bottom: 2%;
+  padding-left: 5% !important;
+}
+
+.card-text {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filename-wrapper > div {
+  display: inline-block;
+}
+
+.vertical-center-createfile {
+  padding-top: 20px;
+}
+
+.form-group-createfile {
+  margin-top: 2%;
+}

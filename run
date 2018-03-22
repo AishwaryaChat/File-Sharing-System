@@ -1,6 +1,6 @@
 #!/bin/bash
 npm install
-cd client_src
+cd src_client
 npm install
 npm run build
 cd ..
